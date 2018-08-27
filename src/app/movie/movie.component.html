@@ -1,0 +1,22 @@
+<img [src]="movie?.Poster" class='poster'>
+<div class='info'>
+  <ul style="margin:0">
+    <li *ngFor="let key of getKeys(movie)">
+      <span *ngIf="key!=='Ratings' && key!=='Poster'">
+        <b>{{key + ': ' }}</b>{{movie[key]}}
+      </span>
+      <span *ngIf="key==='Poster'">
+        <b>{{key + ': '}}</b>
+        <a [href]="movie[key]">{{movie[key]}}</a>
+      </span>
+      <span *ngIf="key === 'Ratings'">
+        <b>Ratings</b>
+        <ul>
+          <li *ngFor="let rating of movie[key]">
+            {{rating?.Source + ': ' + rating?.Value}}
+          </li>
+        </ul>
+      </span>
+    </li>
+  </ul>
+</div>

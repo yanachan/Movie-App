@@ -1,0 +1,19 @@
+<search-movie
+  (newMovie)="setMovieList()"
+></search-movie>
+<mat-card>
+  <mat-card-title>My movies</mat-card-title>
+  <ol>
+    <li *ngFor="let movie of movieList; let ind=index">
+      <a [routerLink]="['movie']" [queryParams]="{Title: movie.Title, Year: movie.Year}">
+        {{movie.Title + ', '+ movie.Year}}
+      </a> 
+      <!-- <button mat-button color="warn" (click)="deleteMovie(ind)">Delete</button>  -->
+      <button mat-icon-button title="Delete from list" (click)="deleteMovie(ind)">
+        <mat-icon >delete_forever</mat-icon>
+      </button>
+    </li>
+  </ol>
+  <span *ngIf="!movieList.length">You don't have any movie! Search movie by title and add it to list.</span>
+</mat-card>
+
